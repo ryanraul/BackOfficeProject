@@ -1,5 +1,5 @@
-﻿using Domain.Core.Repository;
-using Identidade.Domain.Models;
+﻿using Domain.Core.Models;
+using Domain.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

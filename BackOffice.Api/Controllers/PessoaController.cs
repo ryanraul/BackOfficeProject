@@ -23,8 +23,15 @@ namespace BackOffice.Api.Controllers
         public async Task<IActionResult> RecuperarPessoas()
         {
             var pessoas = _pessoaRepository.GetAll();
-
             return Ok(new { success = true, data = pessoas});
+        }
+
+
+        [HttpGet, Route("pessoas/{id}"), ProducesResponseType(typeof(string), (int)System.Net.HttpStatusCode.OK)]
+        public async Task<IActionResult> RecuperaPessoa([FromRoute] Guid id)
+        {
+            var pessoa = _pessoaRepository.RecuperarPessoaEnderecoPorId(id);
+            return Ok(new { success = true, data = pessoa });
         }
 
 
@@ -40,7 +47,7 @@ namespace BackOffice.Api.Controllers
         }
 
         [HttpPut, Route("editar-pessoa/{id}"), ProducesResponseType(typeof(string), (int)System.Net.HttpStatusCode.OK)]
-        public async Task<IActionResult> EditarPessoa([FromBody] PessoaInputModel pessoaInputModel, [FromRoute]Guid id)
+        public async Task<IActionResult> EditarPessoa([FromRoute] Guid id, [FromBody] PessoaInputModel pessoaInputModel)
         {
             var result = _pessoaService.EditarPessoa(id, MapPessoa.MapInputPessoaToPessoaDomain(pessoaInputModel));
 

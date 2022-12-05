@@ -31,16 +31,17 @@ namespace Identidade.Domain.Services
             return _uow.Commit();
         }
 
-        public bool EditarPessoa(Guid id, Pessoa pessoa)
+        public bool EditarPessoa(Guid idPessoa, Pessoa input)
         {
-            var pessoaSalva = _pessoaRepository.GetById(id);
-            var numeroDocumentoExistente = _pessoaRepository.RecuperarPorNumeroDocumento(pessoa.NumeroDocumento) != null;
+            var pessoaSalva = _pessoaRepository.GetById(idPessoa);
+            var numeroDocumentoExistente = _pessoaRepository.RecuperarPorNumeroDocumento(input.NumeroDocumento) != null;
 
             if (pessoaSalva is null || numeroDocumentoExistente )
                 return false;
 
-            pessoa.DataAlteracao = DateTime.Now;
-            _pessoaRepository.Update(pessoa);
+            pessoaSalva.AtualizarPessoa(input.TipoPessoa, input.NumeroDocumento, input.Nome, input.Apelido, input.Endereco);
+
+            _pessoaRepository.Update(pessoaSalva);
 
             return _uow.Commit();
         }

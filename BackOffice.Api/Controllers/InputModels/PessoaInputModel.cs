@@ -19,7 +19,6 @@ namespace BackOffice.Api.Controllers.InputModels
         public static Pessoa MapInputPessoaToPessoaDomain(PessoaInputModel input)
         {
             return new Pessoa(
-                input.Id ?? Guid.Empty,
                 input.TipoPessoa,
                 input.NumeroDocumento,
                 input.Nome,

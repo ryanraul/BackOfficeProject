@@ -25,6 +25,14 @@ namespace BackOffice.Api
             services.AddDbContext<IdentidadeContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddCors(o => o.AddPolicy("AllowAnyOrigin",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                }));
+
             NativeInjectorIdentidade.RegisterServices(services, Configuration);
 
             services.AddControllers();
@@ -48,6 +56,8 @@ namespace BackOffice.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAnyOrigin");
 
             app.UseAuthorization();
 

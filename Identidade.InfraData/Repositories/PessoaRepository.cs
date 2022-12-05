@@ -2,6 +2,8 @@
 using Identidade.Domain.Repository;
 using Identidade.InfraData.Context;
 using Infra.Core.Repository;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 
 namespace Identidade.InfraData.Repositories
@@ -17,6 +19,14 @@ namespace Identidade.InfraData.Repositories
         {
             return DbSet
                     .Where(x => string.Compare(x.NumeroDocumento, numeroDocumento) == 0)
+                    .FirstOrDefault();
+        }
+
+        public Pessoa RecuperarPessoaEnderecoPorId(Guid id)
+        {
+            return DbSet
+                    .Include(x => x.Endereco)
+                    .Where(x => x.Id == id)
                     .FirstOrDefault();
         }
 

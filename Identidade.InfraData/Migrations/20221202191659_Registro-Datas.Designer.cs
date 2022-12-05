@@ -4,14 +4,16 @@ using Identidade.InfraData.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Identidade.InfraData.Migrations
 {
     [DbContext(typeof(IdentidadeContext))]
-    partial class IdentidadeContextModelSnapshot : ModelSnapshot
+    [Migration("20221202191659_Registro-Datas")]
+    partial class RegistroDatas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -6,7 +6,7 @@ namespace Identidade.Domain.Models
 {
     public class Pessoa : BaseEntity
     {
-        public Pessoa(Guid? id,ETipoPessoa tipoPessoa, string numeroDocumento, string nome, string apelido, Endereco endereco)
+        public Pessoa(ETipoPessoa tipoPessoa, string numeroDocumento, string nome, string apelido, Endereco endereco)
         {
             TipoPessoa = tipoPessoa;
             NumeroDocumento = numeroDocumento;
@@ -27,5 +27,15 @@ namespace Identidade.Domain.Models
         public Endereco Endereco { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime DataAlteracao { get; set; }
+
+        public void AtualizarPessoa(ETipoPessoa tipoPessoa, string numeroDocumento, string nome, string apelido, Endereco endereco)
+        {
+            TipoPessoa = tipoPessoa;
+            NumeroDocumento = numeroDocumento;
+            Nome = nome;
+            Apelido = apelido;
+            Endereco = endereco;
+            DataAlteracao = DateTime.Now;
+        }
     }
 }
