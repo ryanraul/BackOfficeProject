@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Identidade.InfraData\Identidade.InfraData.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
-
 </Project>

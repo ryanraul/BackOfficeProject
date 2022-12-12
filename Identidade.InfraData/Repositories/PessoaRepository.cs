@@ -1,9 +1,11 @@
-﻿using Identidade.Domain.Models;
+﻿using Identidade.Domain.Enums;
+using Identidade.Domain.Models;
 using Identidade.Domain.Repository;
 using Identidade.InfraData.Context;
 using Infra.Core.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Identidade.InfraData.Repositories
@@ -30,5 +32,9 @@ namespace Identidade.InfraData.Repositories
                     .FirstOrDefault();
         }
 
+        public IQueryable<Pessoa> RecuperarPessoasPorQualificacao(EQualificacao eQualificacao)
+        {
+            return DbSet.Where(x => x.Qualificacao == eQualificacao);
+        }
     }
 }

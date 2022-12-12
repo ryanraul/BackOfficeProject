@@ -11,6 +11,7 @@ namespace BackOffice.Api.Controllers.InputModels
         public string NumeroDocumento { get; set; }
         public string Nome { get; set; }
         public string Apelido { get; set; }
+        public EQualificacao Qualificacao { get; set; }
         public EnderecoInputModel Endereco { get; set; }
     }
 
@@ -23,7 +24,8 @@ namespace BackOffice.Api.Controllers.InputModels
                 input.NumeroDocumento,
                 input.Nome,
                 input.Apelido,
-                MapEndereco.MapInputEnderecoToEnderecoDomain(input.Endereco));
+                MapEndereco.MapInputEnderecoToEnderecoDomain(input.Endereco),
+                input.Qualificacao);
         }
     }
 }

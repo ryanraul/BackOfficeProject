@@ -1,4 +1,5 @@
 ﻿using BackOffice.Api.Controllers.InputModels;
+using Identidade.Domain.Enums;
 using Identidade.Domain.Repository;
 using Identidade.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,12 @@ namespace BackOffice.Api.Controllers
             return Ok(new { success = true, data = pessoas});
         }
 
+        [HttpGet, Route("pessoas-qualificacao/{qualificacao}"), ProducesResponseType(typeof(string), (int)System.Net.HttpStatusCode.OK)]
+        public async Task<IActionResult> RecuperarPessoasQualificacao(EQualificacao qualificacao)
+        {
+            var pessoas = _pessoaRepository.RecuperarPessoasPorQualificacao(qualificacao);
+            return Ok(new { success = true, data = pessoas });
+        }
 
         [HttpGet, Route("pessoas/{id}"), ProducesResponseType(typeof(string), (int)System.Net.HttpStatusCode.OK)]
         public async Task<IActionResult> RecuperaPessoa([FromRoute] Guid id)

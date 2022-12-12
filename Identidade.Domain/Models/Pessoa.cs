@@ -6,13 +6,14 @@ namespace Identidade.Domain.Models
 {
     public class Pessoa : BaseEntity
     {
-        public Pessoa(ETipoPessoa tipoPessoa, string numeroDocumento, string nome, string apelido, Endereco endereco)
+        public Pessoa(ETipoPessoa tipoPessoa, string numeroDocumento, string nome, string apelido, Endereco endereco, EQualificacao qualificacao)
         {
             TipoPessoa = tipoPessoa;
             NumeroDocumento = numeroDocumento;
             Nome = nome;
             Apelido = apelido;
             Endereco = endereco;
+            Qualificacao = qualificacao;
         }
 
         public Pessoa()
@@ -21,6 +22,7 @@ namespace Identidade.Domain.Models
         }
 
         public ETipoPessoa TipoPessoa { get; private set; }
+        public EQualificacao Qualificacao { get; private set; }
         public string NumeroDocumento { get; private set; }
         public string Nome { get; private set; }
         public string Apelido { get; private set; }
