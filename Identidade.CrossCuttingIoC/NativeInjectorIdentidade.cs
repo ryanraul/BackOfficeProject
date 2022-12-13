@@ -20,6 +20,9 @@ namespace Identidade.CrossCuttingIoC
 
             services.AddScoped<PessoaService>();
             services.AddScoped<IPessoaRepository, PessoaRepository>();
+
+            services.AddScoped<DepartamentoService>();
+            services.AddScoped<IDepartamentoRepository, DepartamentoRepository>();
         }
     }
 }

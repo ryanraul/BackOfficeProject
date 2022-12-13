@@ -11,5 +11,6 @@ namespace Identidade.InfraData.Context
         }
 
         public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<Departamento> Departamentos { get; set; }
     }
 }

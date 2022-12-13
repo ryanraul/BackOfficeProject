@@ -4,45 +4,22 @@ using Identidade.InfraData.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Identidade.InfraData.Migrations
 {
     [DbContext(typeof(IdentidadeContext))]
-    partial class IdentidadeContextModelSnapshot : ModelSnapshot
+    [Migration("20221212235333_Departamentos")]
+    partial class Departamentos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Identidade.Domain.Models.Departamento", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DataAlteracao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ResponsavelId1")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ResponsavelId1");
-
-                    b.ToTable("Departamentos");
-                });
 
             modelBuilder.Entity("Identidade.Domain.Models.Endereco", b =>
                 {
@@ -108,15 +85,6 @@ namespace Identidade.InfraData.Migrations
                     b.HasIndex("EnderecoId");
 
                     b.ToTable("Pessoas");
-                });
-
-            modelBuilder.Entity("Identidade.Domain.Models.Departamento", b =>
-                {
-                    b.HasOne("Identidade.Domain.Models.Pessoa", "Responsavel")
-                        .WithMany()
-                        .HasForeignKey("ResponsavelId1");
-
-                    b.Navigation("Responsavel");
                 });
 
             modelBuilder.Entity("Identidade.Domain.Models.Pessoa", b =>
